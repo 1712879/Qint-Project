@@ -6,28 +6,70 @@
 #include<math.h>
 using namespace std;
 
-class Qint{
+string StringPlsString(string a, string b){
+	string s; int t = 0;
+	int len = (a.length() > b.length()) ? a.length() : b.length();
+	
+	if (a.length() > b.length())
+	{
+		b.insert(0, a.length() - b.length(), '0');
+	}
+	else if(a.length() < b.length()){
+		a.insert(0, b.length() - a.length(), '0');
+	}
+	for (int i = len - 1; i >= 0; i--)
+	{
+		int a1 = a[i] - '0';
+		int b1 = b[i] - '0';
+		int num = a1 + b1 + t;
+		t = 0;
+		if (num > 9)
+		{
+			t = (a1 + b1) / 10;
+		}
+		s.insert(0, 1, num % 10 + '0');
+	}
+	if (t != 0)
+	{
+		s.insert(0, 1, t + '0');
+		t = 0;
+	}
+	return s;
+}
+
+string Add2(string a){
+	return  StringPlsString(a, a);
+}
+
+string _2Exp(int Exp){
+	string s = "1";
+	for (int i = 0; i < Exp; i++)
+	{
+		s = StringPlsString(s,s);
+	}
+	return s;
+}
+
+
+class QInt{
 public:
 	unsigned int data[4];
 
-	string convert();
-	void Nhap();
-	void Xuat();
+	void ScanQInt();
+	void PrintQInt();
 	string ToDec();
-
-	Qint& operator+(const Qint& x);
+	string toHex();
+	//Qint& operator+(const Qint& x);
 };
 
-string Qint::convert(){
-	return "";
-}
-
-void Qint::Nhap(){
+void QInt::ScanQInt(){
 	data[0] = 0;
 	data[1] = 0;
 	data[2] = 0;
 	data[3] = 0;
-	string s = "10110111000111001100111001110011001110001100111000111000111100110011110011";
+	string s;
+	s.insert(0, 16, '0');
+	s.insert(0, 1, '1');
 	cout << s.length() << "\n";
 	for (int i = 0; i < s.length(); i++)
 	{
@@ -38,7 +80,7 @@ void Qint::Nhap(){
 	}
 }
 
-void Qint::Xuat(){
+void QInt::PrintQInt(){
 	int n = 128;
 	for (int i = 0; i < n; i++)
 	{
@@ -48,7 +90,7 @@ void Qint::Xuat(){
 	}
 }
 
-string Qint::ToDec(){
+string QInt::ToDec(){
 	int n = 128;
 	long int kq = 0;
 	string s = "0";
@@ -56,19 +98,14 @@ string Qint::ToDec(){
 	{
 		if ((data[i / 32] >> (n - 1 - i)) & 1)
 		{
-			kq += pow(2,n - i - 1);
+			string kq = _2Exp(128 - 1 - i);
+			s = StringPlsString(s, kq);
 		}
 	}
-	cout << "\n" <<kq;
-	return "";
+	return s;
 }
 
-Qint &Qint::operator+(const Qint &x){
-	int i = 0, kq[10], a = 0;
-	while ((data[i / 32] >> (128 - i - 1) & 1 != 0){
 
-	}
-		
-}
+
 
 #endif

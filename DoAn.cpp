@@ -3,11 +3,10 @@
 
 
 int main(){
-	Qint a;
-	a.Nhap();
-	a.Xuat();
+	QInt a;
+	a.ScanQInt();
+	a.PrintQInt();
 	a.ToDec();
-	//system("pause");
 	_getch();
 	return 0;
 }
