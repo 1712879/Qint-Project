@@ -1,29 +1,11 @@
-#include"DoAn.h"
 #define _CRT_SECURE_NO_WARNINGS
+#include"DoAn.h"
+
 
 
 int main(){
-	QInt a;
-	a.ScanQInt();
-	a.PrintQInt();
-	cout<<"\n"<<a.BinToDec();
-	a.operator<<(2);
-	cout << "\n";
-	a.PrintQInt();
-	cout<<"\n"<<a.BinToDec();
-	a.operator>>(2);
-	cout << "\n";
-	a.PrintQInt();
-	cout << "\n" << a.BinToDec();
-	a.rol(4);
-	cout << "\n";
-	a.PrintQInt();
-	cout << "\n" << a.BinToDec();
-	a.ror(4);
-	cout << "\n";
-	cout << "\n";
-	a.PrintQInt();
-	cout << "\n" << a.BinToDec();
+	Menu();
 	_getch();
 	return 0;
 }
+
